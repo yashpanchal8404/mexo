@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mexo Industries — Inventory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mexo Inventory">
+<meta name="theme-color" content="#1b2024">
+<style>
+  :root{
+    --bg:#e4e7e9;
+    --panel:#f6f7f7;
+    --ink:#1b2024;
+    --muted:#5c6770;
+    --border:#c4cbd0;
+    --ready:#1f6f52;
+    --build:#b1720f;
+    --alert:#a83b2a;
+    --accent:#2b4a5e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .wrap{ max-width:860px; margin:0 auto; padding:20px 16px 80px; }
+
+  header.top{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:12px;
+    padding-bottom:16px;
+    border-bottom:3px solid var(--ink);
+    margin-bottom:18px;
+    flex-wrap:wrap;
+  }
+  .brand{ display:flex; flex-direction:column; gap:2px; }
+  .brand .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    color:var(--muted);
+  }
+  .brand h1{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    font-size:28px;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    margin:0;
+    line-height:1.05;
+  }
+  .brand .sub{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:12px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+  .top-right{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .whoami{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .add-btn{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    background:var(--ink);
+    color:#fff;
+    border:none;
+    padding:11px 18px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .add-btn:active{ transform:translateY(1px); }
+  .linkbtn{
+    background:none;
+    border:none;
+    color:var(--accent);
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    padding:4px 2px;
+  }
+
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    margin-bottom:18px;
+  }
+  .stat{ background:var(--panel); padding:12px 14px; }
+  .stat .num{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:22px; }
+  .stat .lbl{ font-size:12px; color:var(--muted); margin-top:2px; }
+  .stat.alertstat .num{ color:var(--alert); }
+
+  .searchrow{ display:flex; gap:8px; margin-bottom:18px; }
+  .searchrow input{
+    flex:1;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:14px;
+    padding:10px 12px;
+    border:1px solid var(--border);
+    background:var(--panel);
+    color:var(--ink);
+  }
+  .searchrow input:focus{ outline:2px solid var(--accent); outline-offset:-1px; }
+
+  .empty{
+    padding:40px 16px;
+    text-align:center;
+    border:1px dashed var(--border);
+    background:var(--panel);
+  }
+  .empty p{ margin:4px 0; color:var(--muted); font-size:14px; }
+  .empty strong{ font-family:'Oswald', sans-serif; text-transform:uppercase; font-size:16px; color:var(--ink); }
+
+  .card{ background:var(--panel); border:1px solid var(--border); margin-bottom:10px; position:relative; }
+  .card.lowstock{ border-left:4px solid var(--alert); }
+  .card:not(.lowstock){ border-left:4px solid var(--ink); }
+
+  .card-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; padding:14px 14px 8px; }
+  .card-head .name{
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    font-size:19px;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+  }
+  .card-head .unit{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted); margin-top:2px; }
+  .card-head .kitline{ font-size:12px; color:var(--muted); margin-top:5px; line-height:1.5; }
+  .card-head .kitline b{ color:var(--ink); font-weight:600; }
+  .iconbtn{
+    background:none; border:none; color:var(--muted); font-size:13px;
+    font-family:'IBM Plex Sans', sans-serif; cursor:pointer; padding:4px 6px;
+  }
+  .iconbtn:hover{ color:var(--ink); }
+
+  .qtyrow{ display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1px dashed var(--border); }
+  .qtyblock{ padding:12px 14px; }
+  .qtyblock:first-child{ border-right:1px dashed var(--border); }
+  .qtyblock .lbl{ font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+  .qtyblock .val{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:24px; }
+  .qtyblock.ready .val{ color:var(--ready); }
+  .qtyblock.build .val{ color:var(--build); }
+  .qtyblock .val small{ font-size:13px; font-weight:500; color:var(--muted); margin-left:2px;}
+
+  .actions{ display:flex; flex-wrap:wrap; gap:8px; padding:0 14px 14px; }
+  .actbtn{
+    font-family:'IBM Plex Sans', sans-serif; font-size:13px; font-weight:600;
+    padding:8px 12px; border:1px solid var(--ink); background:transparent; color:var(--ink); cursor:pointer;
+  }
+  .actbtn.primary{ background:var(--build); border-color:var(--build); color:#fff; }
+  .actbtn.shift{ background:var(--ready); border-color:var(--ready); color:#fff; }
+  .actbtn.dispatch{ background:var(--accent); border-color:var(--accent); color:#fff; }
+  .actbtn:disabled{ opacity:0.35; cursor:not-allowed; }
+
+  .inline-form{
+    padding:12px 14px; border-top:1px dashed var(--border); background:#eef0ee;
+    display:flex; flex-wrap:wrap; align-items:flex-start; gap:8px;
+  }
+  .inline-form label{ font-size:12px; color:var(--muted); width:100%; }
+  .inline-form input[type=number]{
+    font-family:'IBM Plex Mono', monospace; font-size:16px; padding:8px 10px; border:1px solid var(--border); width:110px;
+  }
+  .inline-form .go{
+    background:var(--ink); color:#fff; border:none; padding:9px 14px; font-weight:600; font-size:13px; cursor:pointer;
+  }
+  .inline-form .cancel{ background:none; border:none; color:var(--muted); font-size:13px; cursor:pointer; padding:9px 6px; }
+  .inline-form .hint{ width:100%; font-size:11px; color:var(--muted); font-family:'IBM Plex Sans', sans-serif; }
+  .subfield{ display:flex; flex-direction:column; gap:3px; }
+  .subfield span{ font-size:11px; color:var(--muted); }
+  .subfield input[type=text], .subfield input[type=date]{ font-family:'IBM Plex Sans', sans-serif; font-size:14px; width:150px; padding:8px 10px; border:1px solid var(--border); }
+  .optional{ font-weight:400; text-transform:none; letter-spacing:0; color:var(--muted); }
+
+  .kitbox{ width:100%; border:1px solid var(--border); background:#fff; padding:10px 12px; margin-top:2px; }
+  .kitbox .fk-row{ display:flex; align-items:center; gap:8px; font-size:13px; }
+  .kitbox .parts{ margin-top:8px; padding-top:8px; border-top:1px dashed var(--border); }
+  .kitbox .parts label{ display:flex; align-items:center; gap:7px; font-size:13px; width:auto; color:var(--ink); margin-bottom:6px; }
+  .kitbox .parts .ph{ font-size:11px; color:var(--muted); margin-bottom:6px; width:100%; }
+
+  .histbtn{
+    background:none; border:none; color:var(--accent); font-size:13px; font-weight:600; cursor:pointer; padding:0 14px 12px;
+  }
+  .history-panel{ border-top:1px dashed var(--border); padding:10px 14px 14px; background:#eef0ee; }
+  .history-panel .htitle{ font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin-bottom:8px; }
+  .history-empty{ font-size:13px; color:var(--muted); }
+  .hist-row{ padding:8px 0; border-bottom:1px solid var(--border); font-size:13px; }
+  .hist-row:last-child{ border-bottom:none; }
+  .hist-top{ display:flex; justify-content:space-between; gap:10px; }
+  .hist-row .hqty{ font-family:'IBM Plex Mono', monospace; font-weight:600; color:var(--accent); white-space:nowrap; }
+  .hist-row .hpo{ color:var(--ink); }
+  .hist-row .hpo.none{ color:var(--muted); font-style:italic; }
+  .hist-row .hdate{ color:var(--muted); white-space:nowrap; font-family:'IBM Plex Mono', monospace; font-size:12px; }
+  .hist-kit{ margin-top:3px; font-size:12px; }
+  .hist-kit.full{ color:var(--ready); }
+  .hist-kit.partial{ color:var(--alert); }
+
+  .field-note{ font-size:11px; color:var(--muted); margin:-10px 0 14px; }
+
+  .chiplist{ display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+  .chip{
+    display:flex; align-items:center; gap:6px; background:#e7eae9; border:1px solid var(--border);
+    padding:5px 8px 5px 10px; font-size:13px;
+  }
+  .chip button{
+    background:none; border:none; color:var(--muted); cursor:pointer; font-size:14px; line-height:1; padding:0;
+  }
+  .chip button:hover{ color:var(--alert); }
+  .addpart-row{ display:flex; gap:8px; margin-top:6px; }
+  .addpart-row input{
+    flex:1; font-family:'IBM Plex Sans', sans-serif; font-size:14px; padding:9px 10px; border:1px solid var(--border);
+  }
+  .addpart-row button{
+    background:var(--ink); color:#fff; border:none; padding:0 14px; font-size:13px; font-weight:600; cursor:pointer;
+  }
+
+  /* Modal */
+  .overlay{ position:fixed; inset:0; background:rgba(20,24,26,0.55); display:flex; align-items:flex-end; justify-content:center; z-index:50; }
+  .modal{
+    background:var(--panel); width:100%; max-width:480px; padding:22px;
+    border-top:3px solid var(--ink); max-height:88vh; overflow:auto;
+  }
+  @media (min-width:600px){ .overlay{ align-items:center; } .modal{ border-top:none; border:1px solid var(--border); } }
+  .modal h2{ font-family:'Oswald', sans-serif; text-transform:uppercase; font-size:20px; margin:0 0 16px; }
+  .field{ margin-bottom:14px; }
+  .field label{ display:block; font-size:12px; color:var(--muted); margin-bottom:5px; text-transform:uppercase; letter-spacing:0.05em; }
+  .field input{ width:100%; font-family:'IBM Plex Sans', sans-serif; font-size:15px; padding:10px 11px; border:1px solid var(--border); background:#fff; }
+  .field-row{ display:flex; gap:10px; }
+  .field-row .field{ flex:1; }
+  .modal-actions{ display:flex; justify-content:flex-end; gap:10px; margin-top:18px; flex-wrap:wrap; }
+  .btn-cancel{ background:none; border:1px solid var(--border); padding:10px 16px; font-size:14px; cursor:pointer; color:var(--muted); }
+  .btn-save{ background:var(--ink); color:#fff; border:none; padding:10px 18px; font-size:14px; font-weight:600; cursor:pointer; }
+  .btn-danger{ background:var(--alert); color:#fff; border:none; padding:10px 18px; font-size:14px; font-weight:600; cursor:pointer; }
+  .err{ color:var(--alert); font-size:12px; margin-top:-8px; margin-bottom:12px; }
+  .loading{ text-align:center; color:var(--muted); padding:30px; font-size:13px; }
+
+  /* Auth screens */
+  .auth-wrap{
+    min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px;
+  }
+  .auth-card{
+    background:var(--panel); border:1px solid var(--border); border-top:4px solid var(--ink);
+    max-width:380px; width:100%; padding:28px 24px;
+  }
+  .auth-card .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--muted); margin-bottom:4px;
+  }
+  .auth-card h1{
+    font-family:'Oswald', sans-serif; font-weight:700; font-size:26px; text-transform:uppercase; margin:0 0 6px;
+  }
+  .auth-card p.desc{ font-size:13px; color:var(--muted); margin:0 0 20px; line-height:1.5; }
+  .auth-card .btn-save{ width:100%; padding:12px; font-size:15px; margin-top:6px; }
+  .auth-note{ font-size:11px; color:var(--muted); margin-top:16px; line-height:1.5; }
+
+
+/* =========================================================
+   MEXO iPhone UI — rounded, touch-first, native-style finish
+   ========================================================= */
+:root{
+  --ios-radius-xl:24px;
+  --ios-radius-lg:18px;
+  --ios-radius-md:14px;
+  --ios-radius-sm:12px;
+  --ios-shadow:0 8px 28px rgba(27,32,36,.08);
+}
+html{
+  background:var(--bg);
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  scroll-behavior:smooth;
+}
+body{
+  min-height:100vh;
+  min-height:100dvh;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Arial,sans-serif;
+  overscroll-behavior-y:none;
+}
+button,input{ -webkit-appearance:none; appearance:none; }
+button{ -webkit-user-select:none; user-select:none; touch-action:manipulation; }
+input{ border-radius:var(--ios-radius-sm); }
+.wrap{
+  max-width:760px;
+  padding:calc(16px + env(safe-area-inset-top)) 16px calc(34px + env(safe-area-inset-bottom));
+}
+header.top{
+  padding:4px 2px 16px;
+  margin-bottom:18px;
+  border-bottom:1px solid rgba(27,32,36,.14);
+}
+.brand .tag,.whoami{font-family:-apple-system,BlinkMacSystemFont,"SF Mono",monospace;}
+.brand h1,.card-head .name,.empty strong,.modal h2,.auth-card h1{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+  letter-spacing:-.02em;
+}
+.brand h1{font-size:30px;font-weight:750;}
+.brand .sub{font-size:13px;}
+.top-right{gap:8px;}
+.add-btn{
+  min-height:44px;
+  padding:10px 16px;
+  border-radius:14px;
+  box-shadow:0 3px 10px rgba(27,32,36,.13);
+  transition:transform .12s ease,opacity .12s ease,box-shadow .12s ease;
+}
+.add-btn:active,.actbtn:active,.btn-save:active,.btn-danger:active,.btn-cancel:active,.addpart-row button:active,.inline-form .go:active{transform:scale(.97);}
+.linkbtn{padding:8px 4px;border-radius:10px;}
+.stats{
+  gap:8px;
+  background:transparent;
+  border:0;
+  margin-bottom:16px;
+}
+.stat{
+  min-width:0;
+  border:1px solid rgba(196,203,208,.75);
+  border-radius:16px;
+  padding:13px 12px;
+  box-shadow:0 2px 10px rgba(27,32,36,.04);
+}
+.stat .num{font-size:21px;}
+.searchrow{
+  position:relative;
+  display:block;
+  margin-bottom:16px;
+}
+.searchrow::before{
+  content:"";
+  position:absolute;
+  left:14px;
+  top:50%;
+  width:13px;
+  height:13px;
+  border:2px solid #7a858d;
+  border-radius:50%;
+  transform:translateY(-55%);
+  pointer-events:none;
+  z-index:2;
+}
+.searchrow::after{
+  content:"";
+  position:absolute;
+  left:27px;
+  top:calc(50% + 5px);
+  width:7px;
+  height:2px;
+  background:#7a858d;
+  border-radius:2px;
+  transform:rotate(45deg);
+  pointer-events:none;
+  z-index:2;
+}
+.searchrow input{
+  width:100%;
+  min-height:46px;
+  padding:11px 15px 11px 43px;
+  border:1px solid rgba(196,203,208,.9);
+  border-radius:16px;
+  background:rgba(246,247,247,.94);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 2px 10px rgba(27,32,36,.035);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
+  font-size:16px;
+  outline:none;
+  transition:border-color .15s ease,box-shadow .15s ease;
+}
+.searchrow input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(43,74,94,.13);}
+.empty{
+  padding:42px 18px;
+  border:1px dashed rgba(196,203,208,.95);
+  border-radius:18px;
+  box-shadow:var(--ios-shadow);
+}
+.card{
+  border:1px solid rgba(196,203,208,.85);
+  border-left-width:4px;
+  border-radius:18px;
+  margin-bottom:12px;
+  overflow:hidden;
+  box-shadow:0 4px 16px rgba(27,32,36,.055);
+}
+.card-head{padding:16px 15px 10px;}
+.card-head .name{font-size:20px;font-weight:700;}
+.iconbtn{
+  min-width:36px;
+  min-height:36px;
+  padding:8px;
+  border-radius:10px;
+  background:rgba(228,231,233,.65);
+}
+.qtyrow{border-top:1px solid rgba(196,203,208,.65);}
+.qtyblock{padding:13px 15px;}
+.qtyblock:first-child{border-right:1px solid rgba(196,203,208,.65);}
+.actions{gap:8px;padding:0 15px 15px;}
+.actbtn{
+  min-height:42px;
+  padding:9px 13px;
+  border-radius:12px;
+  transition:transform .12s ease,opacity .12s ease,box-shadow .12s ease;
+}
+.actbtn.primary,.actbtn.shift,.actbtn.dispatch{box-shadow:0 3px 9px rgba(27,32,36,.10);}
+.inline-form,.history-panel{background:#eef0ee;}
+.inline-form{padding:13px 15px;border-top:1px solid rgba(196,203,208,.65);border-radius:0;}
+.inline-form input[type=number],.subfield input[type=text],.subfield input[type=date]{
+  min-height:42px;
+  border-radius:11px;
+}
+.inline-form .go{
+  min-height:42px;
+  border-radius:12px;
+  box-shadow:0 3px 9px rgba(27,32,36,.10);
+}
+.inline-form .cancel{min-height:42px;border-radius:10px;}
+.kitbox{border-radius:13px;}
+.histbtn{min-height:40px;border-radius:10px;}
+.history-panel{border-top:1px solid rgba(196,203,208,.65);}
+.chip{border-radius:10px;}
+.chip button{min-width:22px;min-height:22px;border-radius:7px;}
+.addpart-row{gap:8px;}
+.addpart-row input{min-height:46px;border-radius:12px;padding:11px 12px;font-size:15px;}
+.addpart-row button{
+  min-height:46px;
+  padding:0 16px;
+  border-radius:12px;
+  box-shadow:0 3px 9px rgba(27,32,36,.10);
+  white-space:nowrap;
+}
+.overlay{
+  background:rgba(15,20,23,.48);
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
+  padding-top:env(safe-area-inset-top);
+}
+.modal{
+  width:100%;
+  max-width:520px;
+  padding:22px 20px calc(22px + env(safe-area-inset-bottom));
+  border:1px solid rgba(196,203,208,.75);
+  border-top:0;
+  border-radius:24px 24px 0 0;
+  box-shadow:0 -12px 40px rgba(0,0,0,.16);
+  max-height:92vh;
+  max-height:92dvh;
+}
+.modal::before{
+  content:"";
+  display:block;
+  width:38px;
+  height:4px;
+  border-radius:999px;
+  background:#c1c7ca;
+  margin:-8px auto 18px;
+}
+.modal h2{font-size:23px;font-weight:750;}
+.field input{
+  min-height:46px;
+  border-radius:12px;
+  padding:11px 12px;
+  font-size:16px;
+  outline:none;
+}
+.field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(43,74,94,.12);}
+.modal-actions{gap:8px;margin-top:20px;}
+.btn-cancel,.btn-save,.btn-danger{
+  min-height:44px;
+  padding:10px 17px;
+  border-radius:13px;
+  transition:transform .12s ease,opacity .12s ease;
+}
+.auth-wrap{
+  min-height:100vh;
+  min-height:100dvh;
+  padding:calc(20px + env(safe-area-inset-top)) 18px calc(20px + env(safe-area-inset-bottom));
+}
+.auth-card{
+  border:1px solid rgba(196,203,208,.8);
+  border-top:0;
+  border-radius:24px;
+  padding:28px 22px;
+  box-shadow:var(--ios-shadow);
+}
+.auth-card .btn-save{min-height:48px;border-radius:14px;}
+
+@media (min-width:600px){
+  .modal{border:1px solid rgba(196,203,208,.8);border-radius:24px;padding-bottom:22px;}
+  .modal::before{display:none;}
+}
+@media (max-width:560px){
+  .wrap{padding-left:14px;padding-right:14px;}
+  header.top{align-items:flex-start;}
+  .top-right{width:100%;justify-content:space-between;}
+  .add-btn{flex:1;}
+  .stats{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .stat{padding:12px 9px;}
+  .stat .num{font-size:19px;}
+  .stat .lbl{font-size:11px;line-height:1.25;}
+  .actions .actbtn{flex:1 1 calc(50% - 8px);}
+  .field-row{flex-direction:column;gap:0;}
+  .modal-actions{display:grid;grid-template-columns:1fr 1fr;}
+  .modal-actions button{width:100%;}
+}
+@media (max-width:390px){
+  .brand h1{font-size:27px;}
+  .stats{gap:6px;}
+  .stat .num{font-size:18px;}
+  .stat .lbl{font-size:10px;}
+  .actions .actbtn{font-size:12px;padding-left:10px;padding-right:10px;}
+  .addpart-row button{padding:0 12px;}
+}
+
+</style>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1b2024">
+</head>
+<body>
+<div class="wrap" id="app">
+  <div class="loading">Loading…</div>
+</div>
+
+<script>
+const AUTH_KEY = 'mexo_auth_v1';
+const PRODUCTS_KEY = 'mexo_products_v1';
+
+let authState = 'loading'; // loading | setup | login | app
+let authConfig = null;
+let loggedIn = false;
+let currentUser = '';
+let loginError = '';
+let changeLoginOpen = false;
+let changeLoginError = '';
+
+let products = [];
+let productsLoaded = false;
+let openQtyForm = null;
+let editModal = null;
+let confirmDelete = null;
+let searchTerm = '';
+let openHistory = null;
+
+function uid(){ return 'p_' + Math.random().toString(36).slice(2,10) + Date.now().toString(36); }
+function esc(s){ const d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+function todayStr(){
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+function formatDate(iso){
+  if(!iso) return '';
+  const parts = iso.split('-');
+  if(parts.length !== 3) return iso;
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return parts[2] + ' ' + months[parseInt(parts[1],10)-1] + ' ' + parts[0];
+}
+
+/* ---------------- BOOT / AUTH ---------------- */
+
+async function boot(){
+  try{
+    const res = await window.storage.get(AUTH_KEY, true);
+    authConfig = res && res.value ? JSON.parse(res.value) : null;
+  }catch(e){
+    authConfig = null;
+  }
+  authState = authConfig ? 'login' : 'setup';
+  renderAuth();
+}
+
+function renderAuth(){
+  const app = document.getElementById('app');
+  let html = '<div class="auth-wrap"><div class="auth-card">';
+  html += '<div class="tag">MEXO INDUSTRIES</div>';
+
+  if(authState === 'setup'){
+    html += '<h1>Set Up Access</h1>';
+    html += '<p class="desc">No login is set for this register yet. Create one login that you and anyone you share this app with (e.g. Nana) will use — everyone signed in sees the same live stock data.</p>';
+    html += '<div class="field"><label>Username</label><input type="text" id="su_user" placeholder="e.g. mexo"></div>';
+    html += '<div class="field"><label>Password</label><input type="password" id="su_pass" placeholder="Choose a password"></div>';
+    html += '<div class="field"><label>Confirm password</label><input type="password" id="su_pass2" placeholder="Re-enter password"></div>';
+    html += '<div class="err" id="auth_err" style="display:none;"></div>';
+    html += '<button class="btn-save" onclick="doSetup()">Create login &amp; continue</button>';
+    html += '<div class="auth-note">This is a simple shared login for keeping the register private to your team — not bank-grade security. Anyone with this username and password, opening this same app link, can view and edit stock.</div>';
+  } else if(authState === 'login'){
+    html += '<h1>Sign In</h1>';
+    html += '<p class="desc">Enter the login for the Mexo Industries stock register.</p>';
+    html += '<div class="field"><label>Username</label><input type="text" id="li_user" placeholder="Username" onkeydown="if(event.key===\'Enter\') doLogin()"></div>';
+    html += '<div class="field"><label>Password</label><input type="password" id="li_pass" placeholder="Password" onkeydown="if(event.key===\'Enter\') doLogin()"></div>';
+    if(loginError){ html += '<div class="err">' + esc(loginError) + '</div>'; }
+    html += '<button class="btn-save" onclick="doLogin()">Sign in</button>';
+    html += '<div class="auth-note">Ask whoever set up this register for the username and password.</div>';
+  }
+
+  html += '</div></div>';
+  app.innerHTML = html;
+}
+
+async function doSetup(){
+  const u = document.getElementById('su_user').value.trim();
+  const p1 = document.getElementById('su_pass').value;
+  const p2 = document.getElementById('su_pass2').value;
+  const errEl = document.getElementById('auth_err');
+  if(!u || !p1){ errEl.textContent = 'Username and password are required.'; errEl.style.display='block'; return; }
+  if(p1 !== p2){ errEl.textContent = 'Passwords do not match.'; errEl.style.display='block'; return; }
+  authConfig = { username: u, password: p1 };
+  try{
+    await window.storage.set(AUTH_KEY, JSON.stringify(authConfig), true);
+  }catch(e){
+    errEl.textContent = 'Could not save login, please try again.'; errEl.style.display='block'; return;
+  }
+  currentUser = u;
+  loggedIn = true;
+  authState = 'app';
+  await loadData();
+}
+
+function doLogin(){
+  const u = document.getElementById('li_user').value.trim();
+  const p = document.getElementById('li_pass').value;
+  if(authConfig && u === authConfig.username && p === authConfig.password){
+    currentUser = u;
+    loggedIn = true;
+    loginError = '';
+    authState = 'app';
+    loadData();
+  } else {
+    loginError = 'Incorrect username or password.';
+    renderAuth();
+  }
+}
+
+function doLogout(){
+  loggedIn = false;
+  currentUser = '';
+  loginError = '';
+  authState = 'login';
+  productsLoaded = false;
+  openQtyForm = null; editModal = null; confirmDelete = null; openHistory = null; searchTerm='';
+  renderAuth();
+}
+
+function openChangeLogin(){ changeLoginOpen = true; changeLoginError=''; render(); }
+function closeChangeLogin(){ changeLoginOpen = false; render(); }
+async function saveChangeLogin(){
+  const cur = document.getElementById('cl_current').value;
+  const nu = document.getElementById('cl_newuser').value.trim();
+  const np = document.getElementById('cl_newpass').value;
+  const errEl = document.getElementById('cl_err');
+  if(cur !== authConfig.password){
+    errEl.textContent = 'Current password is incorrect.'; errEl.style.display='block'; return;
+  }
+  if(!nu || !np){
+    errEl.textContent = 'New username and password are required.'; errEl.style.display='block'; return;
+  }
+  authConfig = { username: nu, password: np };
+  try{
+    await window.storage.set(AUTH_KEY, JSON.stringify(authConfig), true);
+  }catch(e){
+    errEl.textContent = 'Could not save, try again.'; errEl.style.display='block'; return;
+  }
+  currentUser = nu;
+  changeLoginOpen = false;
+  render();
+}
+
+/* ---------------- DATA ---------------- */
+
+async function loadData(){
+  try{
+    const res = await window.storage.get(PRODUCTS_KEY, true);
+    products = res && res.value ? JSON.parse(res.value) : [];
+  }catch(e){
+    products = [];
+  }
+  productsLoaded = true;
+  render();
+}
+
+async function saveData(){
+  try{
+    await window.storage.set(PRODUCTS_KEY, JSON.stringify(products), true);
+  }catch(e){
+    console.error('Save failed', e);
+  }
+}
+
+/* ---------------- MAIN RENDER ---------------- */
+
+function render(){
+  if(authState !== 'app' || !loggedIn){ renderAuth(); return; }
+  const app = document.getElementById('app');
+  if(!productsLoaded){ app.innerHTML = '<div class="loading">Loading register…</div>'; return; }
+
+  const total = products.length;
+  const lowCount = products.filter(p => (p.minQty || 0) > 0 && p.storeQty <= p.minQty).length;
+  const buildCount = products.filter(p => p.buildQty > 0).length;
+
+  let filtered = products;
+  if(searchTerm.trim()){
+    const t = searchTerm.trim().toLowerCase();
+    filtered = products.filter(p => p.name.toLowerCase().includes(t));
+  }
+
+  let html = '';
+  html += '<header class="top">';
+  html += '  <div class="brand"><div class="tag">MEXO INDUSTRIES</div><h1>Inventory Management</h1><div class="sub">Stock register — store room &amp; build process</div></div>';
+  html += '  <div class="top-right">';
+  html += `    <span class="whoami">Signed in as ${esc(currentUser)}</span>`;
+  html += '    <button class="linkbtn" onclick="openChangeLogin()">Change login</button>';
+  html += '    <button class="linkbtn" onclick="doLogout()">Log out</button>';
+  html += '    <button class="add-btn" onclick="openNewProduct()">+ Add Product</button>';
+  html += '  </div>';
+  html += '</header>';
+
+  html += '<div class="stats">';
+  html += `  <div class="stat"><div class="num">${total}</div><div class="lbl">Products tracked</div></div>`;
+  html += `  <div class="stat"><div class="num">${buildCount}</div><div class="lbl">In build process</div></div>`;
+  html += `  <div class="stat alertstat"><div class="num">${lowCount}</div><div class="lbl">Low on store stock</div></div>`;
+  html += '</div>';
+
+  html += '<div class="searchrow"><input type="text" placeholder="Search product…" value="' + esc(searchTerm) + '" oninput="onSearch(this.value)"></div>';
+
+  if(products.length === 0){
+    html += '<div class="empty"><p><strong>Register is empty</strong></p><p>Add your first product to start tracking store room and build-process quantities.</p></div>';
+  } else if(filtered.length === 0){
+    html += '<div class="empty"><p><strong>No match</strong></p><p>No product name matches your search.</p></div>';
+  } else {
+    filtered.slice().sort((a,b) => a.name.localeCompare(b.name)).forEach(p => { html += renderCard(p); });
+  }
+
+  app.innerHTML = html;
+
+  if(editModal){ renderEditModal(); }
+  if(confirmDelete){ renderDeleteModal(); }
+  if(changeLoginOpen){ renderChangeLoginModal(); }
+}
+
+/* ---------------- PRODUCT CARD ---------------- */
+
+function renderCard(p){
+  const low = (p.minQty || 0) > 0 && p.storeQty <= p.minQty;
+  const parts = p.subParts || [];
+  let html = `<div class="card ${low ? 'lowstock' : ''}">`;
+  html += '  <div class="card-head">';
+  html += '    <div>';
+  html += `      <div class="name">${esc(p.name)}</div>`;
+  html += `      <div class="unit">unit: ${esc(p.unit)}${p.minQty ? ' · alert below ' + p.minQty : ''}</div>`;
+  if(parts.length){
+    html += `      <div class="kitline"><b>Kit includes:</b> ${parts.map(sp => esc(sp.name)).join(', ')}</div>`;
+  }
+  html += '    </div>';
+  html += `    <div><button class="iconbtn" onclick="openEditProduct('${p.id}')">Edit</button><button class="iconbtn" onclick="askDelete('${p.id}')">Delete</button></div>`;
+  html += '  </div>';
+
+  html += '  <div class="qtyrow">';
+  html += `    <div class="qtyblock ready"><div class="lbl">Ready in store</div><div class="val">${p.storeQty}<small>${esc(p.unit)}</small></div></div>`;
+  html += `    <div class="qtyblock build"><div class="lbl">In build process</div><div class="val">${p.buildQty}<small>${esc(p.unit)}</small></div></div>`;
+  html += '  </div>';
+
+  html += '  <div class="actions">';
+  html += `    <button class="actbtn primary" onclick="toggleQtyForm('${p.id}','tobuild')">Send to build</button>`;
+  html += `    <button class="actbtn shift" onclick="toggleQtyForm('${p.id}','shift')" ${p.buildQty<=0?'disabled':''}>Shift to store</button>`;
+  html += `    <button class="actbtn dispatch" onclick="toggleQtyForm('${p.id}','dispatch')" ${p.storeQty<=0?'disabled':''}>Dispatch order</button>`;
+  html += '  </div>';
+
+  const histCount = (p.history || []).length;
+  html += `  <button class="histbtn" onclick="toggleHistory('${p.id}')">${openHistory===p.id ? 'Hide' : 'View'} dispatch history${histCount ? ' (' + histCount + ')' : ''}</button>`;
+
+  if(openQtyForm && openQtyForm.id === p.id){ html += renderQtyForm(p, openQtyForm.mode); }
+  if(openHistory === p.id){ html += renderHistoryPanel(p); }
+
+  html += '</div>';
+  return html;
+}
+
+function renderHistoryPanel(p){
+  const hist = (p.history || []).slice().sort((a,b) => (b.ts||0) - (a.ts||0));
+  let html = '<div class="history-panel"><div class="htitle">Dispatch history</div>';
+  if(hist.length === 0){
+    html += '<div class="history-empty">No dispatches recorded yet.</div>';
+  } else {
+    hist.forEach(h => {
+      html += '<div class="hist-row">';
+      html += '<div class="hist-top">';
+      html += `<span class="hqty">${h.qty} ${esc(p.unit)}</span>`;
+      html += `<span class="hpo ${h.po ? '' : 'none'}">${h.po ? 'PO ' + esc(h.po) : 'No PO'}</span>`;
+      html += `<span class="hdate">${formatDate(h.date)}</span>`;
+      html += '</div>';
+      if(h.excluded && h.excluded.length){
+        html += `<div class="hist-kit partial">All items except: ${h.excluded.map(esc).join(', ')}</div>`;
+      } else if(p.subParts && p.subParts.length){
+        html += `<div class="hist-kit full">Full kit</div>`;
+      }
+      html += '</div>';
+    });
+  }
+  html += '</div>';
+  return html;
+}
+
+/* ---------------- QTY FORM (build / shift / dispatch) ---------------- */
+
+function renderQtyForm(p, mode){
+  let label = '', max = null, hint = '';
+  if(mode === 'tobuild'){
+    label = 'Qty being sent for fabrication';
+    hint = 'Adds to "in build process" for ' + esc(p.name) + '.';
+  } else if(mode === 'shift'){
+    label = 'Qty completed, shift to store';
+    max = p.buildQty;
+    hint = 'Moves from build process into ready store stock. Max ' + p.buildQty + ' ' + esc(p.unit) + '.';
+  } else if(mode === 'dispatch'){
+    label = 'Qty going out (order dispatched)';
+    max = p.storeQty;
+    hint = 'Reduces ready store stock. Max ' + p.storeQty + ' ' + esc(p.unit) + '.';
+  }
+  let html = '<div class="inline-form">';
+  html += `<label>${label}</label>`;
+  html += `<input type="number" min="1" ${max!==null?'max="'+max+'"':''} id="qtyinput_${p.id}" placeholder="0" inputmode="numeric">`;
+
+  if(mode === 'dispatch'){
+    html += `<div class="subfield"><span>PO number <span class="optional">(optional)</span></span><input type="text" id="poinput_${p.id}" placeholder="e.g. PO-1042"></div>`;
+    html += `<div class="subfield"><span>Dispatch date</span><input type="date" id="dateinput_${p.id}" value="${todayStr()}"></div>`;
+
+    if(p.subParts && p.subParts.length){
+      html += '<div class="kitbox">';
+      html += `<div class="fk-row"><input type="checkbox" id="fullkit_${p.id}" checked onchange="onFullKitToggle('${p.id}')"> <label style="width:auto;">Full kit going (all parts included)</label></div>`;
+      html += `<div class="parts" id="kitparts_${p.id}" style="display:none;">`;
+      html += '<div class="ph">Tick the part(s) that are NOT going in this dispatch:</div>';
+      p.subParts.forEach(sp => {
+        html += `<label><input type="checkbox" class="kitpart_${p.id}" value="${esc(sp.name)}"> ${esc(sp.name)}</label>`;
+      });
+      html += '</div></div>';
+    }
+  }
+
+  html += `<button class="go" onclick="submitQtyForm('${p.id}','${mode}')">Confirm</button>`;
+  html += `<button class="cancel" onclick="closeQtyForm()">Cancel</button>`;
+  html += `<div class="hint">${hint}${mode==='dispatch' ? ' PO number is optional — leave blank if dispatching without one.' : ''}</div>`;
+  html += '</div>';
+  return html;
+}
+
+function onFullKitToggle(id){
+  const fk = document.getElementById('fullkit_' + id);
+  const box = document.getElementById('kitparts_' + id);
+  if(!fk || !box) return;
+  box.style.display = fk.checked ? 'none' : 'block';
+}
+
+function toggleQtyForm(id, mode){
+  if(openQtyForm && openQtyForm.id === id && openQtyForm.mode === mode){
+    openQtyForm = null;
+  } else {
+    openQtyForm = { id, mode };
+    openHistory = null;
+  }
+  render();
+  setTimeout(() => { const el = document.getElementById('qtyinput_' + id); if(el) el.focus(); }, 30);
+}
+function closeQtyForm(){ openQtyForm = null; render(); }
+
+function submitQtyForm(id, mode){
+  const input = document.getElementById('qtyinput_' + id);
+  const qty = parseInt(input.value, 10);
+  if(!qty || qty <= 0){ input.focus(); return; }
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+
+  if(mode === 'tobuild'){
+    p.buildQty += qty;
+  } else if(mode === 'shift'){
+    const amt = Math.min(qty, p.buildQty);
+    p.buildQty -= amt;
+    p.storeQty += amt;
+  } else if(mode === 'dispatch'){
+    const amt = Math.min(qty, p.storeQty);
+    p.storeQty -= amt;
+    const poEl = document.getElementById('poinput_' + id);
+    const dateEl = document.getElementById('dateinput_' + id);
+    const po = poEl ? poEl.value.trim() : '';
+    const date = (dateEl && dateEl.value) ? dateEl.value : todayStr();
+
+    let excluded = [];
+    if(p.subParts && p.subParts.length){
+      const fk = document.getElementById('fullkit_' + id);
+      const isFull = fk ? fk.checked : true;
+      if(!isFull){
+        const checks = document.querySelectorAll('#kitparts_' + id + ' input:checked');
+        excluded = Array.from(checks).map(c => c.value);
+      }
+    }
+    if(!p.history) p.history = [];
+    p.history.push({ id: uid(), qty: amt, po, date, ts: Date.now(), excluded });
+  }
+  openQtyForm = null;
+  saveData();
+  render();
+}
+
+function onSearch(v){ searchTerm = v; render(); }
+function toggleHistory(id){ openHistory = openHistory === id ? null : id; openQtyForm = null; render(); }
+
+/* ---------------- ADD / EDIT PRODUCT ---------------- */
+
+function openNewProduct(){
+  editModal = { id:null, name:'', unit:'pcs', storeQty:0, buildQty:0, minQty:0, subParts:[], isNew:true };
+  render();
+}
+function openEditProduct(id){
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+  editModal = Object.assign({}, p, { subParts: (p.subParts||[]).map(sp => Object.assign({}, sp)), isNew:false });
+  render();
+}
+function closeEditModal(){ editModal = null; render(); }
+
+function renderEditModal(){
+  const m = editModal;
+  const app = document.getElementById('app');
+  let html = '<div class="overlay" onclick="if(event.target===this) closeEditModal()"><div class="modal">';
+  html += `<h2>${m.isNew ? 'Add Product' : 'Edit Product'}</h2>`;
+  html += '<div class="field"><label>Product name</label><input type="text" id="f_name" value="' + esc(m.name) + '" placeholder="e.g. FCA Body"></div>';
+  html += '<div class="field-row">';
+  html += '<div class="field"><label>Unit</label><input type="text" id="f_unit" value="' + esc(m.unit) + '" placeholder="pcs / kg / mtr"></div>';
+  html += '<div class="field"><label>Low-stock alert below</label><input type="number" min="0" id="f_min" value="' + (m.minQty||0) + '"></div>';
+  html += '</div>';
+  html += '<div class="field-row">';
+  html += '<div class="field"><label>Ready in store</label><input type="number" min="0" id="f_store" value="' + m.storeQty + '"></div>';
+  html += '<div class="field"><label>In build process</label><input type="number" min="0" id="f_build" value="' + m.buildQty + '"></div>';
+  html += '</div>';
+  if(!m.isNew){
+    html += '<div class="field-note">Correcting these directly overwrites the quantities — use this if a shift or entry was done by mistake.</div>';
+  }
+
+  html += '<div class="field"><label>Kit components <span style="text-transform:none;letter-spacing:0;">(optional — only if this product is made of separate parts)</span></label>';
+  html += '<div class="addpart-row"><input type="text" id="f_newpart" placeholder="e.g. Base Plate" onkeydown="if(event.key===\'Enter\'){event.preventDefault();addSubPart();}"><button type="button" onclick="addSubPart()">Add part</button></div>';
+  html += '<div class="chiplist">';
+  (m.subParts||[]).forEach((sp, idx) => {
+    html += `<div class="chip">${esc(sp.name)}<button type="button" onclick="removeSubPart(${idx})">×</button></div>`;
+  });
+  html += '</div></div>';
+
+  html += '<div class="err" id="f_err" style="display:none;"></div>';
+  html += '<div class="modal-actions">';
+  html += '<button class="btn-cancel" onclick="closeEditModal()">Cancel</button>';
+  html += `<button class="btn-save" onclick="saveProductForm()">${m.isNew ? 'Add product' : 'Save changes'}</button>`;
+  html += '</div></div></div>';
+  app.insertAdjacentHTML('beforeend', html);
+}
+
+function addSubPart(){
+  const inp = document.getElementById('f_newpart');
+  const val = inp.value.trim();
+  if(!val) return;
+  if(!editModal.subParts) editModal.subParts = [];
+  editModal.subParts.push({ id: uid(), name: val });
+  render();
+  setTimeout(() => { const el = document.getElementById('f_newpart'); if(el) el.focus(); }, 30);
+}
+function removeSubPart(idx){
+  editModal.subParts.splice(idx, 1);
+  render();
+}
+
+function saveProductForm(){
+  const name = document.getElementById('f_name').value.trim();
+  const unit = document.getElementById('f_unit').value.trim() || 'pcs';
+  const minQty = parseInt(document.getElementById('f_min').value, 10) || 0;
+  const store = parseInt(document.getElementById('f_store').value, 10) || 0;
+  const build = parseInt(document.getElementById('f_build').value, 10) || 0;
+  const errEl = document.getElementById('f_err');
+
+  if(!name){ errEl.textContent = 'Product name is required.'; errEl.style.display = 'block'; return; }
+
+  if(editModal.isNew){
+    const dup = products.some(p => p.name.toLowerCase() === name.toLowerCase());
+    if(dup){ errEl.textContent = 'A product with this name already exists.'; errEl.style.display = 'block'; return; }
+    products.push({ id: uid(), name, unit, storeQty: store, buildQty: build, minQty, subParts: editModal.subParts || [], history: [] });
+  } else {
+    const p = products.find(x => x.id === editModal.id);
+    if(p){
+      p.name = name; p.unit = unit; p.minQty = minQty;
+      p.storeQty = store; p.buildQty = build;
+      p.subParts = editModal.subParts || [];
+    }
+  }
+  editModal = null;
+  saveData();
+  render();
+}
+
+function askDelete(id){ confirmDelete = id; render(); }
+function cancelDelete(){ confirmDelete = null; render(); }
+function renderDeleteModal(){
+  const p = products.find(x => x.id === confirmDelete);
+  const app = document.getElementById('app');
+  if(!p) return;
+  let html = '<div class="overlay" onclick="if(event.target===this) cancelDelete()"><div class="modal">';
+  html += '<h2>Delete product</h2>';
+  html += `<p style="font-size:14px; color:var(--muted); margin-top:-8px;">Remove "${esc(p.name)}" from the register? This deletes its store, build-process and dispatch history. This can't be undone.</p>`;
+  html += '<div class="modal-actions">';
+  html += '<button class="btn-cancel" onclick="cancelDelete()">Cancel</button>';
+  html += `<button class="btn-danger" onclick="doDelete()">Delete</button>`;
+  html += '</div></div></div>';
+  app.insertAdjacentHTML('beforeend', html);
+}
+function doDelete(){
+  products = products.filter(x => x.id !== confirmDelete);
+  confirmDelete = null;
+  saveData();
+  render();
+}
+
+/* ---------------- CHANGE LOGIN MODAL ---------------- */
+
+function renderChangeLoginModal(){
+  const app = document.getElementById('app');
+  let html = '<div class="overlay" onclick="if(event.target===this) closeChangeLogin()"><div class="modal">';
+  html += '<h2>Change Login</h2>';
+  html += '<div class="field"><label>Current password</label><input type="password" id="cl_current" placeholder="Confirm current password"></div>';
+  html += '<div class="field"><label>New username</label><input type="text" id="cl_newuser" value="' + esc(authConfig.username) + '"></div>';
+  html += '<div class="field"><label>New password</label><input type="password" id="cl_newpass" placeholder="New password"></div>';
+  html += '<div class="err" id="cl_err" style="display:none;"></div>';
+  html += '<div class="field-note">Anyone using this register (including on other devices) will need the new login next time they sign in.</div>';
+  html += '<div class="modal-actions">';
+  html += '<button class="btn-cancel" onclick="closeChangeLogin()">Cancel</button>';
+  html += '<button class="btn-save" onclick="saveChangeLogin()">Save login</button>';
+  html += '</div></div></div>';
+  app.insertAdjacentHTML('beforeend', html);
+}
+
+if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("service-worker.js").catch(() => {})); }
+
+boot();
+</script>
+</body>
+</html>
