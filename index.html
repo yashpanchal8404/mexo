@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1b2024">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MEXO Inventory">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<title>MEXO Inventory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1b2024">
+<style>
+  :root{
+    --bg:#e4e7e9;
+    --panel:#f6f7f7;
+    --ink:#1b2024;
+    --muted:#5c6770;
+    --border:#c4cbd0;
+    --ready:#1f6f52;
+    --build:#b1720f;
+    --alert:#a83b2a;
+    --accent:#2b4a5e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .wrap{ max-width:860px; margin:0 auto; padding:20px 16px 80px; }
+
+  header.top{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:12px;
+    padding-bottom:16px;
+    border-bottom:3px solid var(--ink);
+    margin-bottom:18px;
+    flex-wrap:wrap;
+  }
+  .brand{ display:flex; flex-direction:column; gap:2px; }
+  .brand .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    color:var(--muted);
+    text-transform:uppercase;
+  }
+  .brand h1{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    font-size:28px;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    margin:0;
+    line-height:1.05;
+  }
+  .brand .sub{ font-family:'IBM Plex Sans', sans-serif; font-size:12px; color:var(--muted); margin-top:2px; }
+  .top-right{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .whoami{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted); }
+  .add-btn{
+    font-family:'IBM Plex Sans', sans-serif; font-weight:600; font-size:14px;
+    background:var(--ink); color:#fff; border:none; padding:11px 18px; cursor:pointer; white-space:nowrap;
+  }
+  .add-btn:active{ transform:translateY(1px); }
+  .linkbtn{ background:none; border:none; color:var(--accent); font-size:13px; font-weight:600; cursor:pointer; padding:4px 2px; }
+
+  .stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-bottom:18px; }
+  .stat{ background:var(--panel); padding:12px 14px; }
+  .stat .num{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:22px; }
+  .stat .lbl{ font-size:12px; color:var(--muted); margin-top:2px; }
+  .stat.alertstat .num{ color:var(--alert); }
+
+  .searchrow{ display:flex; gap:8px; margin-bottom:6px; }
+  .searchbox{position:relative;flex:1;display:flex;align-items:center;}
+  .searchbox svg{position:absolute;left:14px;width:19px;height:19px;color:#7d8796;pointer-events:none;z-index:2;}
+  .searchbox input{padding-left:43px!important;width:100%;box-sizing:border-box;}
+  .search-hint{ font-size:11px; color:var(--muted); margin-bottom:18px; }
+  .searchrow input{
+    flex:1; font-family:'IBM Plex Sans', sans-serif; font-size:14px; padding:10px 12px;
+    border:1px solid var(--border); background:var(--panel); color:var(--ink);
+  }
+  .searchrow input:focus{ outline:2px solid var(--accent); outline-offset:-1px; }
+
+  .empty{ padding:40px 16px; text-align:center; border:1px dashed var(--border); background:var(--panel); }
+  .empty p{ margin:4px 0; color:var(--muted); font-size:14px; }
+  .empty strong{ font-family:'Oswald', sans-serif; text-transform:uppercase; font-size:16px; color:var(--ink); }
+
+  .card{ background:var(--panel); border:1px solid var(--border); margin-bottom:10px; position:relative; }
+  .card.lowstock{ border:2px solid var(--alert); background:#fbeae7; }
+  .card.lowstock .name{ color:var(--alert); }
+  .card:not(.lowstock){ border-left:4px solid var(--ink); }
+
+  .card-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; padding:14px 14px 8px; }
+  .card-head .name{ font-family:'Oswald', sans-serif; font-weight:600; font-size:19px; text-transform:uppercase; letter-spacing:0.01em; }
+  .card-head .unit{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted); margin-top:2px; }
+  .card-head .kitline{ font-size:12px; color:var(--muted); margin-top:5px; line-height:1.5; }
+  .card-head .kitline b{ color:var(--ink); font-weight:600; }
+  .iconbtn{ background:none; border:none; color:var(--muted); font-size:13px; font-family:'IBM Plex Sans', sans-serif; cursor:pointer; padding:4px 6px; }
+  .iconbtn:hover{ color:var(--ink); }
+
+  .qtyrow{ display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1px dashed var(--border); }
+  .qtyblock{ padding:12px 14px; }
+  .qtyblock:first-child{ border-right:1px dashed var(--border); }
+  .qtyblock .lbl{ font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+  .qtyblock .val{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:24px; }
+  .qtyblock.ready .val{ color:var(--ready); }
+  .qtyblock.build .val{ color:var(--build); }
+  .qtyblock .val small{ font-size:13px; font-weight:500; color:var(--muted); margin-left:2px;}
+
+  .actions{ display:flex; flex-wrap:wrap; gap:8px; padding:0 14px 14px; }
+  .actbtn{
+    font-family:'IBM Plex Sans', sans-serif; font-size:13px; font-weight:600;
+    padding:8px 12px; border:1px solid var(--ink); background:transparent; color:var(--ink); cursor:pointer;
+  }
+  .actbtn.primary{ background:var(--build); border-color:var(--build); color:#fff; }
+  .actbtn.shift{ background:var(--ready); border-color:var(--ready); color:#fff; }
+  .actbtn.dispatch{ background:var(--accent); border-color:var(--accent); color:#fff; }
+  .actbtn:disabled{ opacity:0.35; cursor:not-allowed; }
+
+  .inline-form{
+    padding:12px 14px; border-top:1px dashed var(--border); background:#eef0ee;
+    display:flex; flex-wrap:wrap; align-items:flex-start; gap:8px;
+  }
+  .inline-form label{ font-size:12px; color:var(--muted); width:100%; }
+  .inline-form input[type=number]{
+    font-family:'IBM Plex Mono', monospace; font-size:16px; padding:8px 10px; border:1px solid var(--border); width:110px;
+  }
+  .inline-form .go{ background:var(--ink); color:#fff; border:none; padding:9px 14px; font-weight:600; font-size:13px; cursor:pointer; }
+  .inline-form .cancel{ background:none; border:none; color:var(--muted); font-size:13px; cursor:pointer; padding:9px 6px; }
+  .inline-form .hint{ width:100%; font-size:11px; color:var(--muted); font-family:'IBM Plex Sans', sans-serif; }
+  .subfield{ display:flex; flex-direction:column; gap:3px; }
+  .subfield span{ font-size:11px; color:var(--muted); }
+  .subfield input[type=text], .subfield input[type=date]{ font-family:'IBM Plex Sans', sans-serif; font-size:14px; width:150px; padding:8px 10px; border:1px solid var(--border); }
+  .optional{ font-weight:400; text-transform:none; letter-spacing:0; color:var(--muted); }
+
+  .kitbox{ width:100%; border:1px solid var(--border); background:#fff; padding:10px 12px; margin-top:2px; }
+  .kitbox .fk-row{ display:flex; align-items:center; gap:8px; font-size:13px; }
+  .kitbox .parts{ margin-top:8px; padding-top:8px; border-top:1px dashed var(--border); }
+  .kitbox .parts label{ display:flex; align-items:center; gap:7px; font-size:13px; width:auto; color:var(--ink); margin-bottom:6px; }
+  .kitbox .parts .ph{ font-size:11px; color:var(--muted); margin-bottom:6px; width:100%; }
+
+  .histbtn{ background:none; border:none; color:var(--accent); font-size:13px; font-weight:600; cursor:pointer; padding:0 14px 12px; }
+  .history-panel{ border-top:1px dashed var(--border); padding:10px 14px 14px; background:#eef0ee; }
+  .history-panel .htitle{ font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin-bottom:8px; }
+  .history-empty{ font-size:13px; color:var(--muted); }
+  .hist-row{ padding:8px 0; border-bottom:1px solid var(--border); font-size:13px; }
+  .hist-row:last-child{ border-bottom:none; }
+  .hist-top{ display:flex; justify-content:space-between; gap:10px; }
+  .hist-row .hqty{ font-family:'IBM Plex Mono', monospace; font-weight:600; color:var(--accent); white-space:nowrap; }
+  .hist-row .hpo{ color:var(--ink); }
+  .hist-row .hpo.none{ color:var(--muted); font-style:italic; }
+  .hist-row .hdate{ color:var(--muted); white-space:nowrap; font-family:'IBM Plex Mono', monospace; font-size:12px; }
+  .hist-kit{ margin-top:3px; font-size:12px; }
+  .hist-kit.full{ color:var(--ready); }
+  .hist-kit.partial{ color:var(--alert); }
+
+  .field-note{ font-size:11px; color:var(--muted); margin:-10px 0 14px; }
+
+  .chiplist{ display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+  .chip{ display:flex; align-items:center; gap:6px; background:#e7eae9; border:1px solid var(--border); padding:5px 8px 5px 10px; font-size:13px; }
+  .chip button{ background:none; border:none; color:var(--muted); cursor:pointer; font-size:14px; line-height:1; padding:0; }
+  .chip button:hover{ color:var(--alert); }
+  .addpart-row{ display:flex; gap:8px; margin-top:6px; }
+  .addpart-row input{ flex:1; font-family:'IBM Plex Sans', sans-serif; font-size:14px; padding:9px 10px; border:1px solid var(--border); }
+  .addpart-row button{ background:var(--ink); color:#fff; border:none; padding:0 14px; font-size:13px; font-weight:600; cursor:pointer; }
+  .addpart-hint{ font-size:11px; color:var(--muted); margin-top:5px; }
+
+  .sort-select{min-height:44px;border:1px solid var(--border);background:var(--panel);color:var(--ink);border-radius:14px;padding:0 12px;font-family:'IBM Plex Sans',sans-serif;font-size:13px;}
+  .searchrow{align-items:stretch;} .searchbox{min-width:0;}
+  .card{border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;} .card:active{transform:scale(.995);}
+  .card .iconbtn,.card .actbtn,.card .histbtn{position:relative;z-index:3;}
+  .detail-modal{max-width:560px;} .detail-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:14px;}
+  .detail-name{font-family:'Oswald',sans-serif;font-size:24px;font-weight:600;text-transform:uppercase;line-height:1.15;}
+  .detail-dwg{font-family:'IBM Plex Mono',monospace;color:var(--muted);font-size:12px;margin-top:5px;word-break:break-all;}
+  .detail-close{border:0;background:#eef1f5;border-radius:12px;width:42px;height:42px;font-size:22px;cursor:pointer;}
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0;} .detail-stat{border:1px solid var(--border);border-radius:14px;padding:12px;background:#fff;}
+  .detail-stat .dl{font-size:10px;text-transform:uppercase;color:var(--muted);letter-spacing:.06em;} .detail-stat .dv{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;margin-top:3px;}
+  .detail-section{margin-top:16px;border-top:1px solid var(--border);padding-top:14px;} .detail-section h3{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:15px;margin:0 0 10px;}
+  .attachment-list{display:flex;flex-direction:column;gap:8px;} .attachment-row{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:13px;padding:10px;background:#fff;}
+  .attachment-info{min-width:0;flex:1;} .attachment-name{font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;} .attachment-type{font-size:10px;color:var(--muted);text-transform:uppercase;margin-top:2px;}
+  .file-btn{border:0;border-radius:10px;background:#edf2f7;padding:8px 10px;font-size:12px;cursor:pointer;white-space:nowrap;} .file-btn.primary{background:var(--ink);color:#fff;}
+  .attach-empty{color:var(--muted);font-size:13px;padding:12px 0;} .file-drop{border:1.5px dashed #aeb7c3;border-radius:15px;padding:14px;text-align:center;background:#fafbfc;}
+  .file-drop input{width:100%;font-size:13px;} .file-note{font-size:11px;color:var(--muted);margin-top:7px;line-height:1.4;}
+  .subparts-detail{display:flex;flex-direction:column;gap:7px;} .subpart-detail-row{border:1px solid var(--border);border-radius:12px;padding:9px 11px;font-size:13px;display:flex;justify-content:space-between;gap:10px;} .subpart-detail-row span:last-child{font-family:'IBM Plex Mono',monospace;color:var(--muted);font-size:11px;}
+  .preview-modal{max-width:900px;height:88vh;display:flex;flex-direction:column;} .preview-frame{flex:1;width:100%;border:1px solid var(--border);border-radius:12px;background:#fff;min-height:0;}
+
+  /* Modal */
+  .overlay{ position:fixed; inset:0; background:rgba(20,24,26,0.55); display:flex; align-items:flex-end; justify-content:center; z-index:50; }
+  .modal{ background:var(--panel); width:100%; max-width:480px; padding:22px; border-top:3px solid var(--ink); max-height:88vh; overflow:auto; }
+  @media (min-width:600px){ .overlay{ align-items:center; } .modal{ border-top:none; border:1px solid var(--border); } }
+
+  @media (max-width:480px){
+    .wrap{ padding:14px 12px 70px; }
+    .brand h1{ font-size:22px; }
+    header.top{ flex-direction:column; align-items:stretch; gap:10px; }
+    .top-right{ justify-content:flex-end; }
+    .add-btn{ width:100%; text-align:center; }
+    .stats{ grid-template-columns:1fr; }
+    .card-head{ padding:12px 12px 6px; }
+    .card-head .name{ font-size:17px; }
+    .qtyblock{ padding:10px 12px; }
+    .qtyblock .val{ font-size:20px; }
+    .actions{ padding:0 12px 12px; }
+    .actbtn{ flex:1 1 auto; text-align:center; }
+    .field-row{ flex-direction:column; gap:0; }
+    .modal{ padding:18px; }
+    .addpart-row{ flex-direction:column; }
+    .addpart-row input{ width:100%; }
+    .sort-select{width:100%;}
+    .searchrow{flex-direction:column;}
+  }
+  .modal h2{ font-family:'Oswald', sans-serif; text-transform:uppercase; font-size:20px; margin:0 0 16px; }
+  .field{ margin-bottom:14px; }
+  .field label{ display:block; font-size:12px; color:var(--muted); margin-bottom:5px; text-transform:uppercase; letter-spacing:0.05em; }
+  .field input{ width:100%; font-family:'IBM Plex Sans', sans-serif; font-size:15px; padding:10px 11px; border:1px solid var(--border); background:#fff; }
+  .field-row{ display:flex; gap:10px; }
+  .field-row .field{ flex:1; }
+  .modal-actions{ display:flex; justify-content:flex-end; gap:10px; margin-top:18px; flex-wrap:wrap; }
+  .btn-cancel{ background:none; border:1px solid var(--border); padding:10px 16px; font-size:14px; cursor:pointer; color:var(--muted); }
+  .btn-save{ background:var(--ink); color:#fff; border:none; padding:10px 18px; font-size:14px; font-weight:600; cursor:pointer; }
+  .btn-danger{ background:var(--alert); color:#fff; border:none; padding:10px 18px; font-size:14px; font-weight:600; cursor:pointer; }
+  .err{ color:var(--alert); font-size:12px; margin-top:-8px; margin-bottom:12px; }
+  .loading{ text-align:center; color:var(--muted); padding:30px; font-size:13px; }
+
+  /* Auth screens */
+  .auth-wrap{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px; }
+  .auth-card{ background:var(--panel); border:1px solid var(--border); border-top:4px solid var(--ink); max-width:400px; width:100%; padding:28px 24px; }
+  .auth-card .tag{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--muted); margin-bottom:4px; text-transform:uppercase; }
+  .auth-card h1{ font-family:'Oswald', sans-serif; font-weight:700; font-size:26px; text-transform:uppercase; margin:0 0 6px; }
+  .auth-card p.desc{ font-size:13px; color:var(--muted); margin:0 0 20px; line-height:1.5; }
+  .auth-card .btn-save{ width:100%; padding:12px; font-size:15px; margin-top:6px; }
+  .auth-note{ font-size:11px; color:var(--muted); margin-top:16px; line-height:1.5; }
+
+/* iOS-native visual polish */
+:root{--ios-radius:12px;--ios-radius-lg:16px}
+html{scroll-behavior:smooth}
+body{background:var(--bg);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit}
+button{border-radius:var(--ios-radius);transition:transform .12s ease,opacity .12s ease,box-shadow .12s ease}
+button:active{transform:scale(.98)}
+.add-btn,.actbtn,.btn-save,.btn-danger,.btn-cancel,.inline-form .go,.inline-form .cancel,.addpart-row button{border-radius:12px!important}
+.add-btn{box-shadow:0 2px 7px rgba(0,0,0,.08)}
+.actbtn{min-height:44px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.searchrow input,.field input,.subfield input,.addpart-row input,.inline-form input[type=number]{border-radius:11px!important;min-height:44px}
+.searchrow input:focus,.field input:focus,.subfield input:focus,.addpart-row input:focus,.inline-form input:focus{outline:2px solid color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:0}
+.stats,.card,.empty,.kitbox,.auth-card{border-radius:14px;overflow:hidden}
+.card{box-shadow:0 2px 8px rgba(0,0,0,.045)}
+.stat:first-child{border-radius:14px 0 0 14px}.stat:last-child{border-radius:0 14px 14px 0}
+.chip{border-radius:10px}
+.chip button{border-radius:8px;min-width:30px;min-height:30px}
+.histbtn,.iconbtn,.linkbtn{border-radius:9px;min-height:38px}
+.modal{border-radius:18px 18px 0 0;box-shadow:0 -8px 30px rgba(0,0,0,.12)}
+.overlay{backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.modal-actions{gap:10px}
+.btn-cancel,.btn-save,.btn-danger{min-height:46px}
+.addpart-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(105px,.42fr) auto;gap:8px}
+.addpart-row input{min-width:0}
+.addpart-row button{min-height:46px;padding:0 18px;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.10)}
+@media(max-width:600px){
+ .wrap{padding:calc(14px + env(safe-area-inset-top)) 12px calc(78px + env(safe-area-inset-bottom))}
+ .top-right{gap:8px}.add-btn{min-height:46px}
+ .stats{border-radius:14px;overflow:hidden}.stat:first-child,.stat:last-child{border-radius:0}
+ .card{border-radius:15px}.card-head{padding:14px 13px 8px}.actions{gap:8px}
+ .actbtn{min-height:46px;border-radius:12px!important}
+ .modal{width:100%;max-width:none;max-height:92dvh;padding:18px 15px calc(18px + env(safe-area-inset-bottom));border-radius:18px 18px 0 0}
+ .addpart-row{grid-template-columns:1fr;gap:8px}.addpart-row button{width:100%;min-height:48px}
+ .modal-actions{display:grid;grid-template-columns:1fr 1.35fr}.modal-actions button{width:100%}
+}
+@media(max-width:380px){.addpart-row{grid-template-columns:1fr}.modal-actions{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <div class="loading">Loading…</div>
+</div>
+
+<script>
+const PRODUCTS_KEY = 'inv_products_v1';
+const LOW_STOCK_MAX = 2; // store qty at or below this is flagged low and pinned to top
+
+let products = [];
+let productsLoaded = false;
+let openQtyForm = null;
+let editModal = null;
+let confirmDelete = null;
+let searchTerm = '';
+let openHistory = null;
+let openDetail = null;
+let sortMode = 'name';
+
+function uid(){ return 'p_' + Math.random().toString(36).slice(2,10) + Date.now().toString(36); }
+function esc(s){ const d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+function todayStr(){
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+function formatDate(iso){
+  if(!iso) return '';
+  const parts = iso.split('-');
+  if(parts.length !== 3) return iso;
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return parts[2] + ' ' + months[parseInt(parts[1],10)-1] + ' ' + parts[0];
+}
+
+const IMPORTED_PRODUCTS = [{"name": "BASE PLATE ( FOR TRANSFORMER)", "partNo": "W0290000705Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "BELT GUARD FSC/STK ( MCS100)", "partNo": "W0740003511Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "BOX FOR UNOPENED (SS316L)", "partNo": "W3986A9-001Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "BOX-POWDER COLLECTION (AF9OT)", "partNo": "W0740006691Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "BRACKET 3.4KG SOLO FSC/ STK", "partNo": "W0470004873Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "BRACKET DP 200+ AND DP100", "partNo": "W0170004343Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "BRACKET DP200", "partNo": "W0470004889Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "BRACKET DP200+ FOR MCS 200+", "partNo": "W0470024235Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "BRACKET FOR PCS PIPE (PCS200)", "partNo": "W0170000316Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "BRACKET MINILINE FSC/ STK", "partNo": "W0740003476Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "BRACKET SS 1.2 X 50 X", "partNo": "W0170000294Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "(AFLG25)", "partNo": "W0740003501Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "CAPSULE HOPPER (AF200T)", "partNo": "W0730000236Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "CAPSULE HOPPER AF-150T", "partNo": "W0470009639Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "CAPSULE HOPPER ASSEMBLY", "partNo": "WAF00000720Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "CAPSULE HOPPER LID (AFLG25)", "partNo": "W0710001770Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "CE COVER FOR MOTOR (DP 100)", "partNo": "W0470022736Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "CE DRIVE COVER (DP100)", "partNo": "W470022735Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "CHUTE DETAILS ( FCE200)", "partNo": "W0470005006Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "CHUTE DETAILS (SE100)", "partNo": "W0A7ECE4SACZ", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "CLADDING FOR HSG-SA-9 (SA09)", "partNo": "W0740014642Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "CONNECTING CHUTE ( FCE200)", "partNo": "W0470005010Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "COVER ( COVER FOR BOWL STN 5)", "partNo": "W0710011853Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "COVER FOR POWDER FUNNEL-AF-", "partNo": "W074001175Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "COVER FSC (AFI501)", "partNo": "W0710001761Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "COVER FUNNEL LID (SPP)", "partNo": "W0710008509Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "PROSEAL", "partNo": "W0790017013Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "COVER; POLYCARBONATE (AF1SOT)", "partNo": "W0710010209Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "DELIVERY CHUTE (AF25T)", "partNo": "W0720000180Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "ACCURA200)", "partNo": "W0470021566Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "DOME (FOR POWDER LEFTOVER KIT)", "partNo": "W0470006452Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "DOOR RESTING PLATE (AF200T)", "partNo": "W0610008840Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "DOOR RESTING PLATE AF200T", "partNo": "W0S10008851Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "DRIVE COVER", "partNo": "W047E004861Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "DUST EXTRACTION LH SIDE", "partNo": "W0460000056Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "DUST EXTRACTION RH SIDE", "partNo": "W0460000055Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "ECS HOUSING", "partNo": "WAL00000057Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "ENCLOSURE ( FOR TRANSFORMER )", "partNo": "W0470004872Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "ENCLOSURE AFI50T", "partNo": "W0740003500Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "BOX(AF200T)", "partNo": "W0470005532Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "FEEDER INLET DUCT (TBC300_01)", "partNo": "W0470004145Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "FEEDING HOPPER", "partNo": "W0470004871Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "FILTER FSC/STK", "partNo": "W0740006603Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "FLAP", "partNo": "W0740017302Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "FLAP SS 2.5 X 50.8 X 80 FAB", "partNo": "W0740003490Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "FRAME", "partNo": "W0470004869Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "FUNNEL COVER (FOR STN 4) (SPP)", "partNo": "W0730000241Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "AFISOT", "partNo": "WWO720001961Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "FUNNEL FOR SERVO PFA (STN 4)", "partNo": "W0740003658Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "HOPER FOR ECS 1D59", "partNo": "W0470022027Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "HOPPER (DP 100)", "partNo": "W0470004878Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "HOPPER (PRODITEC)", "partNo": "W03V-10411Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "PCS ( TBC300_01)", "partNo": "W0AEOOE006EZ", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "HOPPER ASSEMBLY AF25T ( SS", "partNo": "W047002117Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "(STOCK)", "partNo": "W047E0E4EASZ", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "VALVE ( TBC6100_0)", "partNo": "W0470024418Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "HOPPER FOR ECS 1D49", "partNo": "W0470022026Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "HOPPER FS LINE |.H/ FAB (DP100)", "partNo": "W0470004874Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "IBC BIN CONNECTING DUCT ASSEMBLY", "partNo": "W0470025094Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "JUNCTION BOX DOOR. FSC AFISOT", "partNo": "W0740003495Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "JUNCTION BOX FSC AFISOT", "partNo": "W0740003494Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "LID FOR PELLET HOPPER (LF70)", "partNo": "W0710004619Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "LIQUID COLLECTOR TRAY STATION", "partNo": "W0470022048Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "LIQUID COLLECTOR TRAY STATION", "partNo": "W0470022045Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "LONG NECK ECS", "partNo": "WALO0000054Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "MAIN FRAME DP200", "partNo": "W0A7000ASE4Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "MOTOR COVER", "partNo": "W0470004870Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "PCS 200 HOPPER ASSLY ( AF2001)", "partNo": "W0470021839Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "PCS B/O MECH COMP TOP COVER", "partNo": "W04EO000061Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "PELLET COLLECTION BOX (AFSOT)", "partNo": "W0470005618Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "PELLET HOPPER STATIC ( AFSOT) (", "partNo": "W0730000171Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "AF9OT) ( SPP)", "partNo": "W0470021265Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "POWDER COLLECTION BOX (AF9OT)", "partNo": "W0749003342Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "POWDER COLLECTION BOX L.H.", "partNo": "W0730000113Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "AFISOT", "partNo": "W074001176Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "POWDER COLLECTION BOX R.H.", "partNo": "W0730000124Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "POWDER COLLECTION BOX-MIDDLE (", "partNo": "W0730000112Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "AFI5OT", "partNo": "W0740003488Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "POWDER HOPPER (WITH PCS)", "partNo": "W0470005035Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "POWDER HOPPER ASSEMBLY", "partNo": "W0O1864Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "POWDER PUSHER SYSTEM", "partNo": "W0470021447Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "AFI50T", "partNo": "W0749003489Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "RESERVOIR FSC/STK", "partNo": "W0470005638Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "RESERVOIR JACKET FSC / STK", "partNo": "W0470005637Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "RETAINER (AF25TCONT)", "partNo": "W0230005951Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘SAMPLE COLLECTION BOX (CW10)", "partNo": "W0470006728Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘SENSOR BKT (PAM FAB) (SA03)", "partNo": "W0170000554Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘SENSOR BKT- (PAM FAB) (SA03)", "partNo": "W0170000555Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘SHEET EXIT CHUT DP200+ OUTLET", "partNo": "W0790017045Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘SHEET METAL SENSOR BRACKET", "partNo": "W0740017357Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "PLATE", "partNo": "W0740017288Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "OUTLET(AF2001)", "partNo": "W0740017204Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘SHORT NECK ECS", "partNo": "WAL09000053Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘SLUG COLLECTION BOX-AF-150T", "partNo": "W0740011777Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘SPACER FOR PUSH BUTTON 1.2MM (", "partNo": "W0749017076Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "AFI50T)", "partNo": "W0470004934Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "FSC/STK (AFI501)", "partNo": "W0470004933Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "(FSC)/STK (AF150T)", "partNo": "W0476004932Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘SS TROLLY (MCTS)", "partNo": "W0470005022Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘STAND FOR LINE FSC/STK", "partNo": "W0470004877Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘STOPPER FSC AFISOT", "partNo": "W06S0000224Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘STRUCTURE ASSEMBLY (FCE200)", "partNo": "WAL00000065Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘SUPPORT FROM FRONT SIDE", "partNo": "W0470024443Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "TEE FO VISCOSITY SENSOR", "partNo": "W9590000072Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "UNOPEN CAPSULE COLLECTION BOX (", "partNo": "WAF00000007Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "UNOPEN CAPSULE COLLECTION BOX (", "partNo": "WAF00000498Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "BOX - AFSOT", "partNo": "WAF00000226Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "(SS316L)(AFSOT)", "partNo": "W398687-001Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "BOX(AF9OT)", "partNo": "W0749003341Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "UPPER TURRET BLANKING DISC B TYPE", "partNo": "W0740017133Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "VIBRATORY POWDER HOPPER-", "partNo": "W0470022597Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WATER COLLECTION BOX (STOCK)(SC) exit (AF9OT)", "partNo": "W0730000103Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "AFISOT", "partNo": "W0479004916Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY BRACKET STAND", "partNo": "W0470021382Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY CHUTE", "partNo": "W0470022016Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY COLLECTION BOX", "partNo": "W0470023218Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "CHUTE DP 200+", "partNo": "W0470021842Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "HOPPER (AF40TCONT)", "partNo": "W0479024332Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "HOPPER ( SPP)", "partNo": "W0470020521Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "FOR CE", "partNo": "W0470024304Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY EXIT CHUTE", "partNo": "W0470021335Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY EXIT CHUTE DP", "partNo": "W0470021746Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY FLAP ( SPP)", "partNo": "W0470022111Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY FRONT COVER", "partNo": "W0470021618Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY HOPPER (LF70) ccit_belcte", "partNo": "W0470022190Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "(AF40TCONT)", "partNo": "W0479024331Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY HOPPER (SPP)", "partNo": "W0470022110Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY HOPPER (STN 6)", "partNo": "W0470023382Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "(STN 6) (LF70)", "partNo": "W0470023390Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "‘SALLF)", "partNo": "W0470020727Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY LID WITH FUNNEL eit", "partNo": "W0470021410Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "COLLECTION BOX (SPP)", "partNo": "W0470011551Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY PENDANT BOX", "partNo": "W0470021502Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY RESERVOIR FLAP", "partNo": "W0470022125Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY STATIC HOPPER:", "partNo": "W0470021407Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY STUD MTG PLATE", "partNo": "W0479022113Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY SUCTION PIPE", "partNo": "W0470021996Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY SUPPORT", "partNo": "W0A70024131Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "LH SIDE ( DP100)", "partNo": "W0470024302Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "LH SIDE (DP100)", "partNo": "W0470024301Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "FOR CE (DP100)", "partNo": "W0470024300Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY UNOPEN BOX", "partNo": "W0470023216Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY VIBRATOR COVER xix", "partNo": "W0740017413Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "LH.SIDE", "partNo": "W0470024301Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "R.H.SIDE", "partNo": "W0470024302Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "ADAPTER", "partNo": "W0470022521Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY; EXIT CHUTE DP", "partNo": "W0470021874Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY; HOPPER", "partNo": "W0470022001Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY; IPC BOX FOR", "partNo": "W0470021733Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "1OZZLE", "partNo": "W0370001935Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "COLLECTION BOX AFISOT", "partNo": "W0470021161Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY; PIPE AFISOT", "partNo": "W0470021127Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WELDED ASSEMBLY; SPFA HOPPER", "partNo": "W0470022684Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "(ACCURA100)", "partNo": "W0470021730Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}, {"name": "WIPER COVER AF200T", "partNo": "W0470021538Z", "unit": "pcs", "storeQty": 0, "buildQty": 0, "subParts": []}];
+
+/* ---------------- BOOT ---------------- */
+
+function boot(){
+  loadData();
+}
+
+/* ---------------- DATA ---------------- */
+
+async function loadData(){
+  try{
+    if(window.storage && typeof window.storage.get==='function'){
+      const res=await window.storage.get(PRODUCTS_KEY,true); products=res&&res.value?JSON.parse(res.value):[];
+    }else{ const raw=localStorage.getItem(PRODUCTS_KEY); products=raw?JSON.parse(raw):[]; }
+  }catch(e){ try{const raw=localStorage.getItem(PRODUCTS_KEY); products=raw?JSON.parse(raw):[];}catch(_){products=[];} }
+  let changed=false;
+  const partNos=new Set(products.map(p=>(p.partNo||'').toLowerCase()).filter(Boolean));
+  IMPORTED_PRODUCTS.forEach(x=>{
+    const dup=(x.partNo&&partNos.has(x.partNo.toLowerCase()))||products.some(p=>(p.name||'').toLowerCase()===(x.name||'').toLowerCase());
+    if(!dup){products.push(Object.assign({id:uid(),history:[],attachments:[],createdAt:Date.now()},x));if(x.partNo)partNos.add(x.partNo.toLowerCase());changed=true;}
+  });
+  products.forEach(p=>{if(!p.createdAt)p.createdAt=Date.now();if(!p.attachments)p.attachments=[];});
+  if(changed) await saveData();
+  productsLoaded=true; render();
+}
+async function saveData(){
+  const serialized=JSON.stringify(products);
+  try{
+    if(window.storage && typeof window.storage.set==='function') await window.storage.set(PRODUCTS_KEY,serialized,true);
+    else localStorage.setItem(PRODUCTS_KEY,serialized);
+  }catch(e){ try{localStorage.setItem(PRODUCTS_KEY,serialized);}catch(_){} }
+}
+
+/* ---------------- MAIN RENDER ---------------- */
+
+function render(){
+  const app = document.getElementById('app');
+  if(!productsLoaded){ app.innerHTML = '<div class="loading">Loading register…</div>'; return; }
+
+  const total = products.length;
+  const lowCount = products.filter(p => p.storeQty <= LOW_STOCK_MAX).length;
+  const buildCount = products.filter(p => p.buildQty > 0).length;
+
+  const filtered = getFilteredProducts();
+
+  let html = '';
+  html += '<header class="top">';
+  html += '  <div class="brand"><div class="tag">Stock Register</div><h1>Inventory Management</h1><div class="sub">Store room &amp; build process</div></div>';
+  html += '  <div class="top-right">';
+  html += '    <button class="add-btn" onclick="openNewProduct()">+ Add Product</button>';
+  html += '  </div>';
+  html += '</header>';
+
+  html += '<div class="stats">';
+  html += `  <div class="stat"><div class="num">${total}</div><div class="lbl">Products tracked</div></div>`;
+  html += `  <div class="stat"><div class="num">${buildCount}</div><div class="lbl">In build process</div></div>`;
+  html += `  <div class="stat alertstat"><div class="num">${lowCount}</div><div class="lbl">Low on store stock</div></div>`;
+  html += '</div>';
+
+  html += '<div class="searchrow"><div class="searchbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><input id="main-search" type="search" value="' + esc(searchTerm) + '" oninput="onSearch(this.value)" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search products..."></div><select class="sort-select" onchange="changeSort(this.value)"><option value="name" '+(sortMode==='name'?'selected':'')+'>Name A–Z</option><option value="name-desc" '+(sortMode==='name-desc'?'selected':'')+'>Name Z–A</option><option value="newest" '+(sortMode==='newest'?'selected':'')+'>Newly added</option><option value="oldest" '+(sortMode==='oldest'?'selected':'')+'>Oldest added</option></select></div>';
+  html += '<div class="search-hint">Searches product name, drawing/part no., and sub-part drawing/part no.</div>';
+
+  html += '<div id="inventory-results">';
+  html += renderResults(filtered);
+  html += '</div>';
+
+  app.innerHTML = html;
+
+  if(editModal){ renderEditModal(); }
+  if(confirmDelete){ renderDeleteModal(); }
+  if(openDetail){ app.insertAdjacentHTML('beforeend', renderDetailModal()); }
+}
+
+/* ---------------- PRODUCT CARD ---------------- */
+
+function renderCard(p){
+  const low = p.storeQty <= LOW_STOCK_MAX;
+  let html = `<div class="card ${low ? 'lowstock' : ''}" onclick="openProductDetail('${p.id}')">`;
+  html += '  <div class="card-head">';
+  html += '    <div>';
+  html += `      <div class="name">${esc(p.name)}</div>`;
+  if(p.partNo){
+    html += `      <div class="unit">${esc(p.partNo)}</div>`;
+  }
+  html += '    </div>';
+  html += `    <div><button class="iconbtn" onclick="event.stopPropagation();openEditProduct('${p.id}')">Edit</button><button class="iconbtn" onclick="event.stopPropagation();askDelete('${p.id}')">Delete</button></div>`;
+  html += '  </div>';
+
+  html += '  <div class="qtyrow">';
+  html += `    <div class="qtyblock ready"><div class="lbl">Ready in store</div><div class="val">${p.storeQty}<small>${esc(p.unit)}</small></div></div>`;
+  html += `    <div class="qtyblock build"><div class="lbl">In build process</div><div class="val">${p.buildQty}<small>${esc(p.unit)}</small></div></div>`;
+  html += '  </div>';
+
+  html += '  <div class="actions">';
+  html += `    <button class="actbtn primary" onclick="event.stopPropagation();toggleQtyForm('${p.id}','tobuild')">Send to build</button>`;
+  html += `    <button class="actbtn shift" onclick="event.stopPropagation();toggleQtyForm('${p.id}','shift')" ${p.buildQty<=0?'disabled':''}>Shift to store</button>`;
+  html += `    <button class="actbtn dispatch" onclick="event.stopPropagation();toggleQtyForm('${p.id}','dispatch')" ${p.storeQty<=0?'disabled':''}>Dispatch order</button>`;
+  html += '  </div>';
+
+  const histCount = (p.history || []).length;
+  html += `  <button class="histbtn" onclick="event.stopPropagation();toggleHistory('${p.id}')">${openHistory===p.id ? 'Hide' : 'View'} dispatch history${histCount ? ' (' + histCount + ')' : ''}</button>`;
+
+  if(openQtyForm && openQtyForm.id === p.id){ html += renderQtyForm(p, openQtyForm.mode); }
+  if(openHistory === p.id){ html += renderHistoryPanel(p); }
+
+  html += '</div>';
+  return html;
+}
+
+function renderHistoryPanel(p){
+  const hist = (p.history || []).slice().sort((a,b) => (b.ts||0) - (a.ts||0));
+  let html = '<div class="history-panel"><div class="htitle">Dispatch history</div>';
+  if(hist.length === 0){
+    html += '<div class="history-empty">No dispatches recorded yet.</div>';
+  } else {
+    hist.forEach(h => {
+      html += '<div class="hist-row">';
+      html += '<div class="hist-top">';
+      html += `<span class="hqty">${h.qty} ${esc(p.unit)}</span>`;
+      html += `<span class="hpo ${h.po ? '' : 'none'}">${h.po ? 'PO ' + esc(h.po) : 'No PO'}</span>`;
+      html += `<span class="hdate">${formatDate(h.date)}</span>`;
+      html += '</div>';
+      if(h.excluded && h.excluded.length){
+        html += `<div class="hist-kit partial">All items except: ${h.excluded.map(esc).join(', ')}</div>`;
+      } else if(p.subParts && p.subParts.length){
+        html += `<div class="hist-kit full">Full kit</div>`;
+      }
+      html += '</div>';
+    });
+  }
+  html += '</div>';
+  return html;
+}
+
+/* ---------------- QTY FORM (build / shift / dispatch) ---------------- */
+
+function renderQtyForm(p, mode){
+  let label = '', max = null, hint = '';
+  if(mode === 'tobuild'){
+    label = 'Qty being sent for fabrication';
+    hint = 'Adds to "in build process" for ' + esc(p.name) + '.';
+  } else if(mode === 'shift'){
+    label = 'Qty completed, shift to store';
+    max = p.buildQty;
+    hint = 'Moves from build process into ready store stock. Max ' + p.buildQty + ' ' + esc(p.unit) + '.';
+  } else if(mode === 'dispatch'){
+    label = 'Qty going out (order dispatched)';
+    max = p.storeQty;
+    hint = 'Reduces ready store stock. Max ' + p.storeQty + ' ' + esc(p.unit) + '.';
+  }
+  let html = '<div class="inline-form">';
+  html += `<label>${label}</label>`;
+  html += `<input type="number" min="1" ${max!==null?'max="'+max+'"':''} id="qtyinput_${p.id}" inputmode="numeric">`;
+
+  if(mode === 'dispatch'){
+    html += `<div class="subfield"><span>PO number <span class="optional">(optional)</span></span><input type="text" id="poinput_${p.id}"></div>`;
+    html += `<div class="subfield"><span>Dispatch date</span><input type="date" id="dateinput_${p.id}" value="${todayStr()}"></div>`;
+
+    if(p.subParts && p.subParts.length){
+      html += '<div class="kitbox">';
+      html += `<div class="fk-row"><input type="checkbox" id="fullkit_${p.id}" checked onchange="onFullKitToggle('${p.id}')"> <label style="width:auto;">Full kit going (all parts included)</label></div>`;
+      html += `<div class="parts" id="kitparts_${p.id}" style="display:none;">`;
+      html += '<div class="ph">Tick the part(s) that are NOT going in this dispatch:</div>';
+      p.subParts.forEach(sp => {
+        html += `<label><input type="checkbox" class="kitpart_${p.id}" value="${esc(sp.name)}"> ${esc(sp.name)}</label>`;
+      });
+      html += '</div></div>';
+    }
+  }
+
+  html += `<button class="go" onclick="submitQtyForm('${p.id}','${mode}')">Confirm</button>`;
+  html += `<button class="cancel" onclick="closeQtyForm()">Cancel</button>`;
+  html += `<div class="hint">${hint}${mode==='dispatch' ? ' PO number is optional — leave blank if dispatching without one.' : ''}</div>`;
+  html += '</div>';
+  return html;
+}
+
+function onFullKitToggle(id){
+  const fk = document.getElementById('fullkit_' + id);
+  const box = document.getElementById('kitparts_' + id);
+  if(!fk || !box) return;
+  box.style.display = fk.checked ? 'none' : 'block';
+}
+
+function toggleQtyForm(id, mode){
+  if(openQtyForm && openQtyForm.id === id && openQtyForm.mode === mode){
+    openQtyForm = null;
+  } else {
+    openQtyForm = { id, mode };
+    openHistory = null;
+  }
+  render();
+  setTimeout(() => { const el = document.getElementById('qtyinput_' + id); if(el) el.focus(); }, 30);
+}
+function closeQtyForm(){ openQtyForm = null; render(); }
+
+function submitQtyForm(id, mode){
+  const input = document.getElementById('qtyinput_' + id);
+  const qty = parseInt(input.value, 10);
+  if(!qty || qty <= 0){ input.focus(); return; }
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+
+  if(mode === 'tobuild'){
+    p.buildQty += qty;
+  } else if(mode === 'shift'){
+    const amt = Math.min(qty, p.buildQty);
+    p.buildQty -= amt;
+    p.storeQty += amt;
+  } else if(mode === 'dispatch'){
+    const amt = Math.min(qty, p.storeQty);
+    p.storeQty -= amt;
+    const poEl = document.getElementById('poinput_' + id);
+    const dateEl = document.getElementById('dateinput_' + id);
+    const po = poEl ? poEl.value.trim() : '';
+    const date = (dateEl && dateEl.value) ? dateEl.value : todayStr();
+
+    let excluded = [];
+    if(p.subParts && p.subParts.length){
+      const fk = document.getElementById('fullkit_' + id);
+      const isFull = fk ? fk.checked : true;
+      if(!isFull){
+        const checks = document.querySelectorAll('#kitparts_' + id + ' input:checked');
+        excluded = Array.from(checks).map(c => c.value);
+      }
+    }
+    if(!p.history) p.history = [];
+    p.history.push({ id: uid(), qty: amt, po, date, ts: Date.now(), excluded });
+  }
+  openQtyForm = null;
+  saveData();
+  render();
+}
+
+function getFilteredProducts(){
+  let filtered = products;
+  const t = searchTerm.trim().toLowerCase();
+  if(!t) return filtered;
+  return products.filter(p => {
+    if((p.name || '').toLowerCase().includes(t)) return true;
+    if(p.partNo && p.partNo.toLowerCase().includes(t)) return true;
+    if(p.subParts && p.subParts.some(sp =>
+      (sp.name && sp.name.toLowerCase().includes(t)) ||
+      (sp.partNo && sp.partNo.toLowerCase().includes(t))
+    )) return true;
+    return false;
+  });
+}
+
+function renderResults(filtered){
+  let html = '';
+  if(products.length === 0){
+    html += '<div class="empty"><p><strong>Register is empty</strong></p><p>Add your first product to start tracking store room and build-process quantities.</p></div>';
+  } else if(filtered.length === 0){
+    html += '<div class="empty"><p><strong>No match</strong></p><p>No product name or drawing/part number matches your search.</p></div>';
+  } else {
+    filtered.slice().sort((a,b) => {
+      if(sortMode==='newest') return (b.createdAt||0)-(a.createdAt||0);
+      if(sortMode==='oldest') return (a.createdAt||0)-(b.createdAt||0);
+      const dir=sortMode==='name-desc'?-1:1;
+      return (a.name||'').localeCompare(b.name||'',undefined,{numeric:true,sensitivity:'base'})*dir;
+    }).forEach(p => { html += renderCard(p); });
+  }
+  return html;
+}
+
+function onSearch(v){
+  searchTerm = v;
+  // Do NOT re-render the whole app here. Replacing the input element on every
+  // keystroke makes iOS Safari/Home Screen Web Apps dismiss the keyboard.
+  const results = document.getElementById('inventory-results');
+  if(results){
+    results.innerHTML = renderResults(getFilteredProducts());
+  }
+}
+function toggleHistory(id){ openHistory = openHistory === id ? null : id; openQtyForm = null; render(); }
+
+/* ---------------- DETAILS + DRAWING FILES ---------------- */
+const FILE_DB_NAME='mexo_inventory_files_v1'; let fileDBPromise=null;
+function getFileDB(){if(fileDBPromise)return fileDBPromise;fileDBPromise=new Promise((resolve,reject)=>{const req=indexedDB.open(FILE_DB_NAME,1);req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains('files'))db.createObjectStore('files');};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});return fileDBPromise;}
+async function putAttachmentBlob(key,blob){const db=await getFileDB();return new Promise((resolve,reject)=>{const tx=db.transaction('files','readwrite');tx.objectStore('files').put(blob,key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});}
+async function getAttachmentBlob(key){const db=await getFileDB();return new Promise((resolve,reject)=>{const tx=db.transaction('files','readonly');const r=tx.objectStore('files').get(key);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}
+async function deleteAttachmentBlob(key){try{const db=await getFileDB();db.transaction('files','readwrite').objectStore('files').delete(key);}catch(e){}}
+function fileKey(pid,fid){return pid+'::'+fid;} function formatBytes(n){if(!n)return '0 KB';if(n<1048576)return Math.max(1,Math.round(n/1024))+' KB';return (n/1048576).toFixed(1)+' MB';}
+function changeSort(v){sortMode=v;render();} function openProductDetail(id){openDetail=id;render();} function closeProductDetail(){openDetail=null;render();}
+function renderAttachmentRows(p,editable=false){const files=p.attachments||[];if(!files.length)return '<div class="attach-empty">No PDF, DXF or DWG files attached yet.</div>';return '<div class="attachment-list">'+files.map(f=>{const ext=(f.name.split('.').pop()||'').toUpperCase();return `<div class="attachment-row"><div class="attachment-info"><div class="attachment-name">${esc(f.name)}</div><div class="attachment-type">${ext||'FILE'} • ${formatBytes(f.size)}</div></div>${ext==='PDF'?`<button class="file-btn primary" onclick="event.stopPropagation();previewAttachment('${p.id}','${f.id}')">View</button>`:''}<button class="file-btn" onclick="event.stopPropagation();downloadAttachment('${p.id}','${f.id}')">Download</button>${editable?`<button class="file-btn" onclick="event.stopPropagation();removeAttachment('${f.id}')">Remove</button>`:''}</div>`;}).join('')+'</div>';}
+function renderDetailModal(){const p=products.find(x=>x.id===openDetail);if(!p)return '';let h='<div class="overlay" onclick="if(event.target===this)closeProductDetail()"><div class="modal detail-modal">';h+='<div class="detail-top"><div><div class="detail-name">'+esc(p.name)+'</div><div class="detail-dwg">'+esc(p.partNo||'No drawing / part number')+'</div></div><button class="detail-close" onclick="closeProductDetail()">×</button></div>';h+='<div class="detail-grid"><div class="detail-stat"><div class="dl">Ready in store</div><div class="dv">'+(p.storeQty||0)+' '+esc(p.unit||'pcs')+'</div></div><div class="detail-stat"><div class="dl">In build process</div><div class="dv">'+(p.buildQty||0)+' '+esc(p.unit||'pcs')+'</div></div></div>';h+='<div class="detail-section"><h3>Sub items</h3>'+(p.subParts&&p.subParts.length?'<div class="subparts-detail">'+p.subParts.map(sp=>`<div class="subpart-detail-row"><span>${esc(sp.name)}</span><span>${esc(sp.partNo||'No drawing no.')}</span></div>`).join('')+'</div>':'<div class="attach-empty">No sub items added.</div>')+'</div>';h+='<div class="detail-section"><h3>Drawing files ('+(p.attachments||[]).length+')</h3>'+renderAttachmentRows(p)+'</div>';h+='<div class="modal-actions"><button class="btn-cancel" onclick="closeProductDetail()">Back</button><button class="btn-save" onclick="closeProductDetail();openEditProduct(\''+p.id+'\')">Edit product</button></div></div></div>';return h;}
+async function previewAttachment(pid,fid){const p=products.find(x=>x.id===pid),f=p&&p.attachments&&p.attachments.find(x=>x.id===fid);if(!f)return;const ext=(f.name.split('.').pop()||'').toLowerCase();if(ext!=='pdf'){alert('DXF/DWG preview is not supported directly in the iPhone browser. Use Download to open it in a CAD app.');return;}const blob=await getAttachmentBlob(fileKey(pid,fid));if(!blob){alert('File data is not available.');return;}const url=URL.createObjectURL(blob),ov=document.createElement('div');ov.className='overlay';ov.innerHTML='<div class="modal preview-modal"><div class="detail-top"><div class="detail-name" style="font-size:18px;">'+esc(f.name)+'</div><button class="detail-close" id="close-preview">×</button></div><iframe class="preview-frame" src="'+url+'" title="PDF preview"></iframe></div>';document.body.appendChild(ov);const close=()=>{URL.revokeObjectURL(url);ov.remove();};document.getElementById('close-preview').onclick=close;ov.onclick=e=>{if(e.target===ov)close();};}
+async function downloadAttachment(pid,fid){const p=products.find(x=>x.id===pid),f=p&&p.attachments&&p.attachments.find(x=>x.id===fid);if(!f)return;const blob=await getAttachmentBlob(fileKey(pid,fid));if(!blob){alert('File data is not available.');return;}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=f.name;a.target='_blank';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);}
+async function uploadFiles(input){const files=Array.from(input.files||[]);if(!files.length||!editModal)return;if(!editModal.id&&!editModal.tempId)editModal.tempId=uid();const pid=editModal.id||editModal.tempId;if(!editModal.attachments)editModal.attachments=[];for(const file of files){const ext=(file.name.split('.').pop()||'').toLowerCase();if(!['pdf','dxf','dwg'].includes(ext))continue;const id=uid();await putAttachmentBlob(fileKey(pid,id),file);editModal.attachments.push({id,name:file.name,size:file.size,type:file.type||ext,addedAt:Date.now()});}render();}
+async function removeAttachment(fid){if(!editModal||!editModal.attachments)return;const pid=editModal.id||editModal.tempId,f=editModal.attachments.find(x=>x.id===fid);if(f)await deleteAttachmentBlob(fileKey(pid,fid));editModal.attachments=editModal.attachments.filter(x=>x.id!==fid);render();}
+
+/* ---------------- ADD / EDIT PRODUCT ---------------- */
+
+function openNewProduct(){
+  editModal = { id:null, tempId:uid(), name:'', partNo:'', unit:'pcs', storeQty:'', buildQty:'', subParts:[], attachments:[], isNew:true };
+  render();
+}
+function openEditProduct(id){
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+  editModal = Object.assign({}, p, { subParts: (p.subParts||[]).map(sp => Object.assign({}, sp)), attachments:(p.attachments||[]).map(f=>Object.assign({},f)), isNew:false });
+  render();
+}
+function closeEditModal(){ editModal = null; render(); }
+
+function renderEditModal(){
+  const m = editModal;
+  const app = document.getElementById('app');
+  let html = '<div class="overlay" onclick="if(event.target===this) closeEditModal()"><div class="modal">';
+  html += `<h2>${m.isNew ? 'Add Product' : 'Edit Product'}</h2>`;
+  html += '<div class="field"><label>Product name</label><input type="text" id="f_name" value="' + esc(m.name) + '" oninput="editModal.name=this.value"></div>';
+  html += '<div class="field"><label>Drawing no. / Part no. <span style="text-transform:none;letter-spacing:0;">(optional)</span></label><input type="text" id="f_partno" value="' + esc(m.partNo || '') + '" oninput="editModal.partNo=this.value"></div>';
+  html += '<div class="field-row">';
+  html += '<div class="field"><label>Unit</label><input type="text" id="f_unit" value="' + esc(m.unit) + '" oninput="editModal.unit=this.value"></div>';
+  html += '<div class="field"><label>Ready in store</label><input type="number" min="0" id="f_store" value="' + esc(m.storeQty) + '" oninput="editModal.storeQty=this.value"></div>';
+  html += '</div>';
+  html += '<div class="field-row">';
+  html += '<div class="field"><label>In build process</label><input type="number" min="0" id="f_build" value="' + esc(m.buildQty) + '" oninput="editModal.buildQty=this.value"></div>';
+  html += '<div class="field"></div>';
+  html += '</div>';
+  if(!m.isNew){
+    html += '<div class="field-note">Correcting these directly overwrites the quantities — use this if a shift or entry was done by mistake.</div>';
+  }
+
+  html += '<div class="field"><label>Kit components <span style="text-transform:none;letter-spacing:0;">(optional — only if this product is made of separate parts)</span></label>';
+  html += '<div class="addpart-row"><input type="text" id="f_newpart" onkeydown="if(event.key===\'Enter\'){event.preventDefault();addSubPart();}"><input type="text" id="f_newpartno" style="max-width:140px;" onkeydown="if(event.key===\'Enter\'){event.preventDefault();addSubPart();}"><button type="button" onclick="addSubPart()">Add part</button></div>';
+  html += '<div class="addpart-hint">Part name, then its drawing/part no. (optional)</div>';
+  html += '<div class="chiplist">';
+  (m.subParts||[]).forEach((sp, idx) => {
+    const label = esc(sp.name) + (sp.partNo ? ' — ' + esc(sp.partNo) : '');
+    html += `<div class="chip">${label}<button type="button" onclick="removeSubPart(${idx})">×</button></div>`;
+  });
+  html += '</div></div>';
+
+  html += '<div class="field"><label>Drawing files</label><div class="file-drop"><input type="file" multiple accept=".pdf,.dxf,.dwg,application/pdf" onchange="uploadFiles(this)"><div class="file-note">Upload multiple PDF, DXF and DWG files for this product. They stay attached to this drawing.</div></div>'+renderAttachmentRows(Object.assign({},m,{attachments:m.attachments||[]}),true)+'</div>';
+  html += '<div class="err" id="f_err" style="display:none;"></div>';
+  html += '<div class="modal-actions">';
+  html += '<button class="btn-cancel" onclick="closeEditModal()">Cancel</button>';
+  html += `<button class="btn-save" onclick="saveProductForm()">${m.isNew ? 'Add product' : 'Save changes'}</button>`;
+  html += '</div></div></div>';
+  app.insertAdjacentHTML('beforeend', html);
+}
+
+function addSubPart(){
+  const inp = document.getElementById('f_newpart');
+  const partnoInp = document.getElementById('f_newpartno');
+  const val = inp.value.trim();
+  const partNo = partnoInp ? partnoInp.value.trim() : '';
+  if(!val) return;
+  if(!editModal.subParts) editModal.subParts = [];
+  editModal.subParts.push({ id: uid(), name: val, partNo });
+  render();
+  setTimeout(() => { const el = document.getElementById('f_newpart'); if(el) el.focus(); }, 30);
+}
+function removeSubPart(idx){
+  editModal.subParts.splice(idx, 1);
+  render();
+}
+
+function saveProductForm(){
+  const name = document.getElementById('f_name').value.trim();
+  const partNo = document.getElementById('f_partno').value.trim();
+  const unit = document.getElementById('f_unit').value.trim() || 'pcs';
+  const store = parseInt(document.getElementById('f_store').value, 10) || 0;
+  const build = parseInt(document.getElementById('f_build').value, 10) || 0;
+  const errEl = document.getElementById('f_err');
+
+  if(!name){ errEl.textContent = 'Product name is required.'; errEl.style.display = 'block'; return; }
+
+  if(editModal.isNew){
+    const dup = products.some(p => p.name.toLowerCase() === name.toLowerCase());
+    if(dup){ errEl.textContent = 'A product with this name already exists.'; errEl.style.display = 'block'; return; }
+    products.push({ id: editModal.tempId || uid(), name, partNo, unit, storeQty: store, buildQty: build, subParts: editModal.subParts || [], history: [], attachments: editModal.attachments || [], createdAt: Date.now() });
+  } else {
+    const p = products.find(x => x.id === editModal.id);
+    if(p){
+      p.name = name; p.partNo = partNo; p.unit = unit;
+      p.storeQty = store; p.buildQty = build;
+      p.subParts = editModal.subParts || [];
+      p.attachments = editModal.attachments || [];
+    }
+  }
+  editModal = null;
+  saveData();
+  render();
+}
+
+function askDelete(id){ confirmDelete = id; render(); }
+function cancelDelete(){ confirmDelete = null; render(); }
+function renderDeleteModal(){
+  const p = products.find(x => x.id === confirmDelete);
+  const app = document.getElementById('app');
+  if(!p) return;
+  let html = '<div class="overlay" onclick="if(event.target===this) cancelDelete()"><div class="modal">';
+  html += '<h2>Delete product</h2>';
+  html += `<p style="font-size:14px; color:var(--muted); margin-top:-8px;">Remove "${esc(p.name)}" from the register? This deletes its store, build-process and dispatch history. This can't be undone.</p>`;
+  html += '<div class="modal-actions">';
+  html += '<button class="btn-cancel" onclick="cancelDelete()">Cancel</button>';
+  html += `<button class="btn-danger" onclick="doDelete()">Delete</button>`;
+  html += '</div></div></div>';
+  app.insertAdjacentHTML('beforeend', html);
+}
+async function doDelete(){
+  const doomed=products.find(x=>x.id===confirmDelete);if(doomed&&doomed.attachments)for(const f of doomed.attachments)await deleteAttachmentBlob(fileKey(doomed.id,f.id));
+  products = products.filter(x => x.id !== confirmDelete);
+  confirmDelete = null;
+  saveData();
+  render();
+}
+
+boot();
+</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(console.error));}</script></body>
+</html>
